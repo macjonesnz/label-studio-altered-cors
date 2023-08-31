@@ -108,7 +108,7 @@ export class APIProxy {
     const currentOrigin = window.location.origin;
     const gatewayOrigin = new URL(this.gateway).origin;
 
-    return currentOrigin === gatewayOrigin ? "*" : "cors";
+    return currentOrigin === gatewayOrigin ? "same-origin" : "cors";
   }
 
   /**
@@ -176,7 +176,7 @@ export class APIProxy {
           method: requestMethod,
           headers: requestHeaders,
           mode: this.requestMode,
-          credentials: this.requestMode === "cors" ? "omit" : "same-origin",
+          credentials: this.requestMode === "cors" ? "omit" : "*",
         };
 
         if (signal) {
