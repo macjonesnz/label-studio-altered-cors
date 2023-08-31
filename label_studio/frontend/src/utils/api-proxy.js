@@ -44,7 +44,7 @@ export class APIProxy {
   mockDisabled = false;
 
   /** @type {"same-origin"|"cors"} */
-  requestMode = "same-origin";
+  requestMode = "*";
 
   /** @type {Dict} */
   sharedParams = {};
@@ -108,7 +108,7 @@ export class APIProxy {
     const currentOrigin = window.location.origin;
     const gatewayOrigin = new URL(this.gateway).origin;
 
-    return currentOrigin === gatewayOrigin ? "same-origin" : "cors";
+    return currentOrigin === gatewayOrigin ? "*" : "cors";
   }
 
   /**
